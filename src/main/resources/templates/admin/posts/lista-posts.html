@@ -66,10 +66,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-                    </li>
                 </ul>
                 <hr>
             </div>
@@ -85,15 +81,17 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Descripcion</th>
-                        <th>Opciones</th>
+                        <th>Imagen</th>
+                        <th>Categoria</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
+                    <tr  th:each="post : ${posts}">
+                        <td th:text="${post.id}"></td>
+                        <td th:text="${post.titulo}"></td>
+                        <td th:text="${post.contenido}"></td>
+                        <td><img th:src="@{'/uploads/'+${post.imagen}}" width="100"/></td>
+                        <td th:text="${post.categoria.nombre}"></tdth>
 
                     </tr>
                     </tbody>

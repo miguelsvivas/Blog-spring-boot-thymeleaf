@@ -1,6 +1,9 @@
 package com.blog.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Post {
@@ -12,22 +15,30 @@ public class Post {
     private String contenido;
     private String imagen;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyy")
+    private LocalDate fecha;
+
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    //private Usuario usuario;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     public Post() {
     }
 
-    public Post(Long id, String titulo, String contenido, String imagen, Categoria categoria, Usuario usuario) {
+
+    public Post(Long id, String titulo, String contenido, String imagen, LocalDate fecha, Categoria categoria, Usuario usuario) {
         this.id = id;
         this.titulo = titulo;
         this.contenido = contenido;
         this.imagen = imagen;
+        this.fecha = fecha;
         this.categoria = categoria;
+        this.usuario = usuario;
     }
 
     public Long getId() {
@@ -62,11 +73,27 @@ public class Post {
         this.imagen = imagen;
     }
 
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
     public Categoria getCategoria() {
         return categoria;
     }
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

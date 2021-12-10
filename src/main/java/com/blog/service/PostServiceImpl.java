@@ -5,6 +5,8 @@ import com.blog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PostServiceImpl implements PostService{
 
@@ -14,5 +16,10 @@ public class PostServiceImpl implements PostService{
     @Override
     public Post save(Post post) {
         return postRepository.save(post);
+    }
+
+    @Override
+    public List<Post> listadoPosts() {
+        return postRepository.findAll();
     }
 }
