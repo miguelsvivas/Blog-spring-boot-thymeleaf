@@ -85,22 +85,37 @@
                 <hr>
             </div>
         </div>
-        <div class="col py-3">
-            <h1>Crear Categoria</h1>
-            <div class="justify-content-center align-items-center container">
-            <div class="row">
-            <form th:action="@{/categorias/save}"  method="post">
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" >
+        <div class="col py-6 pl-4">
+            <h1>Crear Post</h1>
+            <div class="justify-content-center align-items-center container ">
+                <div class="row">
+                    <form th:action="@{/posts/save}"  method="post">
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label">Titulo</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="contenido" class="form-label">Contenido</label>
+                            <input type="text" class="form-control" id="contenido" name="contenido">
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagen" class="form-label">Imagen</label>
+                            <input type="text" class="form-control" id="imagen" name="imagen">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="col-form-label col-sm-4">Categoria : </label>
+                        <select  class="form-control" name="categoria" required>
+                            <th:block th:each="categoria : ${listaCategorias}">
+                                <option th:text="${categoria.nombre}" th:value="${categoria.id}"></option>
+                            </th:block>
+                        </select>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción</label>
-                    <input type="text" class="form-control" id="descripcion" name="descripcion">
-                </div>
-                <button type="submit" class="btn btn-primary">Registrar</button>
-            </form>
-             </div>
             </div>
         </div>
     </div>

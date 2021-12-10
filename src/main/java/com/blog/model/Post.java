@@ -1,20 +1,23 @@
 package com.blog.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-
+@Entity
 public class Post {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private  String titulo;
     private String contenido;
     private String imagen;
+
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
-    private Usuario usuario;
+
+    //private Usuario usuario;
 
     public Post() {
     }
@@ -25,8 +28,45 @@ public class Post {
         this.contenido = contenido;
         this.imagen = imagen;
         this.categoria = categoria;
-        this.usuario = usuario;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 }
