@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link  rel="stylesheet" th:href="@{/css/style.css}">
-    <title>Document</title>
+
+    <title>Posts</title>
 </head>
 <body>
 
@@ -30,42 +31,21 @@
                     </li>
                     <li>
                         <a  th:href="@{posts}" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Posts</span></a>
+                            <i class="far fa-newspaper"></i>  Posts</a>
                     </li>
                     <li>
                         <a  th:href="@{categorias}" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Categorias</span></a>
+                            <i class="far fa-folder"></i>   Categorias</a>
                     </li>
                     <li>
                         <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                            </li>
-                        </ul>
+                            <i class="fas fa-users"></i>  Usuarios</a>
                     </li>
                     <li>
-                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                            </li>
-                        </ul>
+                        <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                            <i class="fas fa-door-open"></i> Salir</a>
                     </li>
+
                 </ul>
                 <hr>
             </div>
@@ -79,19 +59,28 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Descripcion</th>
-                        <th>Imagen</th>
+                        <th>Titulo</th>
+                        <th>Fecha de creación</th>
+                        <th>Autor</th>
                         <th>Categoria</th>
+                        <th>Imagen</th>
+                        <th>Opciones</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr  th:each="post : ${posts}">
                         <td th:text="${post.id}"></td>
                         <td th:text="${post.titulo}"></td>
-                        <td th:text="${post.contenido}"></td>
+                        <td th:text="${post.fecha}"></td>
+                        <td th:text="${post.usuario.nombre}"></td>
+                        <td th:text="${post.categoria.nombre}"></td>
                         <td><img th:src="@{'/uploads/'+${post.imagen}}" width="100"/></td>
-                        <td th:text="${post.categoria.nombre}"></tdth>
+                        <td><a type="button" class="btn btn-primary" th:href="@{posts/edit/{id} (id=${post.id}) }">
+                            Editar
+                        </a>
+
+                            <a th:onclick="eliminarPost([[${post.id}]])" class="btn btn-danger">Eliminar</a>
+                        </td>
 
                     </tr>
                     </tbody>
@@ -100,9 +89,8 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/js/funciones.js"></script>
 </body>
 </html>

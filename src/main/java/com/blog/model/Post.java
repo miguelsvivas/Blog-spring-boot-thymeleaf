@@ -6,10 +6,11 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "posts")
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private  String titulo;
     private String contenido;
@@ -39,6 +40,13 @@ public class Post {
         this.fecha = fecha;
         this.categoria = categoria;
         this.usuario = usuario;
+    }
+
+    public Post(Long id, String titulo, String contenido, Categoria categoria) {
+        this.id = id;
+        this.titulo = titulo;
+        this.contenido = contenido;
+        this.categoria = categoria;
     }
 
     public Long getId() {

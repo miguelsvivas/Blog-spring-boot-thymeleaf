@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostServiceImpl implements PostService{
@@ -19,7 +20,17 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
+    public Optional<Post> get(Long id) {
+        return postRepository.findById(id);
+    }
+
+    @Override
     public List<Post> listadoPosts() {
         return postRepository.findAll();
+    }
+
+    @Override
+    public void eliminarPost(Long id) {
+        postRepository.deleteById(id);
     }
 }

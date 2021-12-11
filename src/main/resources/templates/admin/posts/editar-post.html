@@ -17,7 +17,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 
-    <title>Crear Post</title>
+    <title>Editar Post</title>
 </head>
 <body>
 
@@ -93,33 +93,42 @@
             </div>
         </div>
         <div class="col py-6 pl-4">
-            <h1>Crear Post</h1>
+            <h1>Editar Post</h1>
             <div class="justify-content-center align-items-center container ">
                 <div class="row">
-                    <form th:action="@{/posts/save}"  method="post" enctype="multipart/form-data">
+                    <form th:action="@{/posts/update}"  method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="id" class="form-label">id</label>
+                            <input type="number" class="form-control" id="id" name="id" th:value="${post.id}">
+                        </div>
                         <div class="mb-3">
                             <label for="titulo" class="form-label">Titulo</label>
-                            <input type="text" class="form-control" id="titulo" name="titulo" >
+                            <input type="text" class="form-control" id="titulo" name="titulo" th:value="${post.titulo}" >
                         </div>
+
                         <div class="mb-3">
-                            <textarea id="summernote" name="contenido"  placeholder="Texto *"></textarea>
+                            <textarea id="summernote" name="contenido"  placeholder="Texto *" th:text="${post.contenido}">
+
+                            </textarea>
                         </div>
+
+
                         <div class="mb-3">
-                                <label >Imagen de la pelicula</label>
-                                <input type="file" name="file" class="form-control" />
+                            <label >Imagen de la pelicula</label>
+                            <input type="file" name="file" class="form-control" />
                         </div>
+
 
                         <div class="mb-3">
                             <label class="col-form-label col-sm-4">Categoria : </label>
-                        <select  class="form-control" name="categoria" required>
-                            <th:block th:each="categoria : ${listaCategorias}">
-                                <option th:text="${categoria.nombre}" th:value="${categoria.id}"></option>
-                            </th:block>
-                        </select>
+                            <select class="form-control" name="categoria" required>
+                                <th:block th:each="categoria : ${listaCategorias}">
+                                    <option th:text="${categoria.nombre}" th:value="${categoria.id}"></option>
+                                </th:block>
+                            </select>
                         </div>
 
-
-                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
                     </form>
                 </div>
             </div>

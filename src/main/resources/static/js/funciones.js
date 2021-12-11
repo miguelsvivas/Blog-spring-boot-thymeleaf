@@ -28,3 +28,35 @@ swal({
 
 
 }
+
+
+function eliminarPost(id){
+swal({
+  title: "¿Esta seguro de eliminar este post?",
+  text: "",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((OK) => {
+  if (OK) {
+    $.ajax({
+        url:"posts/delete/"+id,
+        success : function(res){
+        console.log(res);
+        }
+    });
+    swal("¡El post ha sido eliminado!", {
+      icon: "success",
+    }).then((ok) => {
+        if(ok){
+            location.href="/posts";
+        }
+    });
+  } else {
+    swal("Se ha cancelado la operacion!");
+  }
+});
+
+
+}
