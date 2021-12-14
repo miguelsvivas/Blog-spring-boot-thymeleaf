@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("posts")
+@RequestMapping("admin/posts")
 public class PostController {
 
     @Autowired
@@ -81,7 +81,7 @@ public class PostController {
                 e.getCause().getMessage();
             }
         }
-       return "redirect:/posts";
+       return "redirect:/admin/posts";
     }
 
 
@@ -141,7 +141,7 @@ public class PostController {
 
 
 
-        return "redirect:/posts";
+        return "redirect:/admin/posts";
     }
 
     @GetMapping("/delete/{id}")

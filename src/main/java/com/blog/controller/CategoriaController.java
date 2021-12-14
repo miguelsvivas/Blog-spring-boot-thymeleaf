@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("categorias")
+@RequestMapping("admin/categorias")
 public class CategoriaController {
 
     @Autowired
