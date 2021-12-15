@@ -6,7 +6,11 @@
 <link  rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+    <!-- Navigation -->
+<div th:include="navbar.html ::header"></div >  
+
 <div class="container">
+    
 <form th:action="@{/signin}" method="POST">
     <div class="mb-3">
         <label for="username" class="form-label">Usuario</label>

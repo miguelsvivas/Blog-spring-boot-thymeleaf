@@ -72,7 +72,7 @@
                         <td th:text="${post.id}"></td>
                         <td th:text="${post.titulo}"></td>
                         <td th:text="${post.fecha}"></td>
-                        <td th:text="${post.usuario.nombre}"></td>
+                        <td th:text="${post.usuario.username}"></td>
                         <td th:text="${post.categoria.nombre}"></td>
                         <td><img th:src="@{'/uploads/'+${post.imagen}}" width="100"/></td>
                         <td><a type="button" class="btn btn-primary" th:href="@{posts/edit/{id} (id=${post.id}) }">

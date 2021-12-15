@@ -34,11 +34,11 @@ public class CategoriaController {
 
 
 
-    @PostMapping("/save")
+    @PostMapping("admin/crear-categoria/save")
     public String guardarCategoria(Categoria categoria, RedirectAttributes redirect){
 
         categoriaService.save(categoria);
-        return "redirect:/categorias";
+        return "redirect:/admin/categorias";
     }
 
     @PostMapping("/update")

@@ -54,13 +54,13 @@ public class PostController {
         return "/admin/posts/crear-post";
     }
 
-    @PostMapping("/save")
+    @PostMapping("admin/crear/save")
     public String savePost(@RequestParam(name = "file", required = false) MultipartFile imagen, Post post, RedirectAttributes redirect){
 
         if(!imagen.isEmpty()) {
             String ruta = "C://Users//MIGUEL//Documents//blog//uploads";
             String nombreUnico = UUID.randomUUID()+ "img" + imagen.getOriginalFilename();
-            Usuario usuario = new Usuario(1L);
+            Usuario usuario = new Usuario(2L);
 
             try {
 
