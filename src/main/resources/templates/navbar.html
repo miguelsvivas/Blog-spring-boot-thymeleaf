@@ -1,5 +1,7 @@
 <!doctype html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -28,14 +30,17 @@
                     <a class="nav-link" href="#">Categorias</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/login}">Ingresar</a>
+                    <a class="nav-link" th:href="@{/login}"
+                    sec:authorize="!isAuthenticated()">Ingresar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/usuario/registro}">Registrarse</a>
+                    <a class="nav-link" th:href="@{/usuario/registro}"
+                    sec:authorize="!isAuthenticated()">Registrarse</a>
                 </li>
-                <div class="userdropwdown">
+                <div class="userdropwdown"  sec:authorize="isAuthenticated()">
                 <li class="nav-item dropdown">
-                    <a class="nav-link me-auto dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link me-auto dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" 
+                    data-bs-toggle="dropdown" aria-expanded="false" th:if="${username != null}" th:text="${username}">
                         Usuario
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

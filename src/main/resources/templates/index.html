@@ -35,7 +35,7 @@
                   <p class="card-text" >Fecha: <small class="text-muted"th:text="${post.fecha}"></small></p>
                 <!--  <p class="card-text" th:utext="${post.contenido}"><p>-->
                   <br/>
-                   <a th:href="@{/login}" style="color: black; text-decoration: none;">Leer más <i class="fas fa-caret-right"></i></a> 
+                   <a th:href="@{post/{id} (id=${post.id}) }" style="color: black; text-decoration: none;">Leer más <i class="fas fa-caret-right"></i></a> 
                   
                 </div>
               </div>
