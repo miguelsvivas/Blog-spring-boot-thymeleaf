@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class AdminController {
+@RequestMapping("admin/usuarios")
+public class UsuarioAdminController {
 
-    @GetMapping("admin")
-    public String adminhome(){
-        return "admin/administrador";
+    @GetMapping("")
+    public String listaUsuarios(){
+
+        return "/admin/user/lista-usuarios";
     }
-
-
-
+    
 }

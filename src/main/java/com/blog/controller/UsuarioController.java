@@ -27,6 +27,8 @@ public class UsuarioController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    
+
     @GetMapping("/registro")
     public String register(){
 

@@ -51,8 +51,8 @@
             </div>
         </div>
         <div class="col py-3">
-            <h1>Lista de posts</h1>
-            <a class="btn btn-success" th:href="@{posts/crear}" > Crear Posts</a>
+            <h1>Lista de usuarios</h1>
+            <a class="btn btn-success"  > Crear Posts</a>
 
             <div class="card-body">
                 <table class="table table-bordered">
@@ -68,19 +68,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr  th:each="post : ${posts}">
-                        <td th:text="${post.id}"></td>
-                        <td th:text="${post.titulo}"></td>
-                        <td th:text="${post.fecha}"></td>
-                        <td th:text="${post.usuario.username}"></td>
-                        <td th:text="${post.categoria.nombre}"></td>
-                        <td><img th:src="@{'/uploads/'+${post.imagen}}" width="100"/></td>
-                        <td><a type="button" class="btn btn-primary" th:href="@{posts/edit/{id} (id=${post.id}) }">
-                            Editar
-                        </a>
-
-                            <a th:onclick="eliminarPost([[${post.id}]])" class="btn btn-danger">Eliminar</a>
-                        </td>
+                    <tr>
+                  
 
                     </tr>
                     </tbody>
@@ -89,8 +78,5 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="/js/funciones.js"></script>
 </body>
 </html>
