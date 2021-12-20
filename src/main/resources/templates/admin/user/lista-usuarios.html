@@ -58,22 +58,22 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Titulo</th>
-                        <th>Fecha de creación</th>
-                        <th>Autor</th>
-                        <th>Categoria</th>
-                        <th>Imagen</th>
-                        <th>Opciones</th>
+                        <th >ID</th>
+                        <th>Nombre de usuario</th>
+                        <th>Rol</th>
+            
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                  
-
+                    <tr th:each="usuario : ${usuarios}" >
+                        <td th:text="${usuario.id}"></td>
+                        <td th:text="${usuario.username}"></td>
+                        <td th:each="rol: ${usuario.roles}"
+                        th:text="${rol.rolNombre}"></td>
                     </tr>
                     </tbody>
                 </table>
+  
             </div>
         </div>
     </div>
