@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("admin/categorias")
+@RequestMapping("admin-categorias")
 public class CategoriaController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class CategoriaController {
         return "/admin/listar-categorias";
     }
 
-    @GetMapping("/crear-categoria")
+    @GetMapping("/crear")
     public String categoriaform(){
 
         return "/admin/crear-categoria";
@@ -34,11 +34,11 @@ public class CategoriaController {
 
 
 
-    @PostMapping("admin/crear-categoria/save")
+    @PostMapping("admin-categorias/crear/save")
     public String guardarCategoria(Categoria categoria, RedirectAttributes redirect){
 
         categoriaService.save(categoria);
-        return "redirect:/admin/categorias";
+        return "redirect:/admin-categorias";
     }
 
     @PostMapping("/update")
@@ -46,7 +46,7 @@ public class CategoriaController {
 
         categoriaService.save(categoria);
 
-        return "redirect:/categorias";
+        return "redirect:/admin-categorias";
     }
 
 
@@ -55,7 +55,7 @@ public class CategoriaController {
 
         categoriaService.eliminarCategoria(id);
 
-        return "redirect:/categorias";
+        return "redirect:admin/categorias";
     }
 
 

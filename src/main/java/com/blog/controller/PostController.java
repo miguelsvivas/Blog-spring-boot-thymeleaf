@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("admin/posts")
+@RequestMapping("admin-posts")
 public class PostController {
 
     @Autowired
@@ -54,7 +54,7 @@ public class PostController {
         return "/admin/posts/crear-post";
     }
 
-    @PostMapping("admin/crear/save")
+    @PostMapping("admin-posts/crear/save")
     public String savePost(@RequestParam(name = "file", required = false) MultipartFile imagen, Post post, RedirectAttributes redirect){
 
         if(!imagen.isEmpty()) {
@@ -81,7 +81,7 @@ public class PostController {
                 e.getCause().getMessage();
             }
         }
-       return "redirect:/admin/posts";
+       return "redirect:/admin-posts";
     }
 
 
@@ -107,7 +107,7 @@ public class PostController {
 
 
 
-        Usuario usuario = new Usuario(1L);
+        Usuario usuario = new Usuario(2L);
         post.setFecha(p.getFecha());
         post.setUsuario(usuario);
 
@@ -141,7 +141,7 @@ public class PostController {
 
 
 
-        return "redirect:/admin/posts";
+        return "redirect:/admin-posts";
     }
 
     @GetMapping("/delete/{id}")

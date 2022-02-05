@@ -9,7 +9,7 @@ swal({
 .then((OK) => {
   if (OK) {
     $.ajax({
-        url:"categorias/delete/"+id,
+        url:"admin-categorias/delete/"+id,
         success : function(res){
         console.log(res);
         }
@@ -18,7 +18,7 @@ swal({
       icon: "success",
     }).then((ok) => {
         if(ok){
-            location.href="/categorias";
+            location.reload()
         }
     });
   } else {
@@ -41,7 +41,7 @@ swal({
 .then((OK) => {
   if (OK) {
     $.ajax({
-        url:"posts/delete/"+id,
+        url:"admin-posts/delete/"+id,
         success : function(res){
         console.log(res);
         }
@@ -50,7 +50,7 @@ swal({
       icon: "success",
     }).then((ok) => {
         if(ok){
-            location.href="/posts";
+            location.reload()
         }
     });
   } else {
