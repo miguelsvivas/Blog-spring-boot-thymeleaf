@@ -12,6 +12,8 @@ public interface PostService {
 
     public Optional<Post> get(Long id);
 
+    Post postPorId(Long id);
+
     List<Post> listadoPosts();
 
     void eliminarPost(Long id);

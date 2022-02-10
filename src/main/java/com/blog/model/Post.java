@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -28,11 +29,17 @@ public class Post {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "post")
+	private List<Comentario> comentarios;
+
     public Post() {
     }
 
 
-    public Post(Long id, String titulo, String contenido, String imagen, LocalDate fecha, Categoria categoria, Usuario usuario) {
+    
+
+    public Post(Long id, String titulo, String contenido, String imagen, LocalDate fecha, Categoria categoria,
+            Usuario usuario, List<Comentario> comentarios) {
         this.id = id;
         this.titulo = titulo;
         this.contenido = contenido;
@@ -40,7 +47,11 @@ public class Post {
         this.fecha = fecha;
         this.categoria = categoria;
         this.usuario = usuario;
+        this.comentarios = comentarios;
     }
+
+
+
 
     public Post(Long id, String titulo, String contenido, Categoria categoria) {
         this.id = id;
@@ -104,4 +115,18 @@ public class Post {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+
+
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+
+
+
+
+
+    
 }
