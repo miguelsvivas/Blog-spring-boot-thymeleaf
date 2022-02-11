@@ -4,9 +4,11 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
+import com.blog.model.Categoria;
 import com.blog.model.Comentario;
 import com.blog.model.Post;
 import com.blog.model.Usuario;
+import com.blog.service.CategoriaService;
 import com.blog.service.ComentarioService;
 import com.blog.service.PostService;
 import com.blog.service.UsuarioService;
@@ -37,13 +39,20 @@ public class HomeController {
     @Autowired
     UsuarioService usuarioService;
 
+    @Autowired
+    CategoriaService categoriaService;
+
     @GetMapping("")
     public String home(Model model,Authentication auth){
 
         if(auth != null){
         String username = auth.getName();
         model.addAttribute("username", username);
-        }    
+        }
+        
+        
+        
+        model.addAttribute("categorias", categoriaService.listadoCategoria());
         model.addAttribute("posts", postService.listadoPosts());
 
         return "index";
@@ -63,18 +72,34 @@ public class HomeController {
 			
 		}
 
+        
+
         Post post = postService.postPorId(id);
 		
 		Comentario comentario = new Comentario();
 		
 		comentario.setPost(post);
 
-
+        model.addAttribute("categorias", categoriaService.listadoCategoria());
         model.addAttribute("comentario", comentario);
         model.addAttribute("post", post);
 
 
         return "post";
+    }
+
+    @GetMapping("/categoria/{id}")
+    public String mostrarCategoria(@PathVariable Long id,Model model,Authentication auth){
+
+        Categoria categoria = categoriaService.categoriaPorId(id);
+
+
+
+        
+        model.addAttribute("categoria", categoria);
+
+
+        return "categoria";
     }
 
     @PostMapping("/post/guardar-comentario")

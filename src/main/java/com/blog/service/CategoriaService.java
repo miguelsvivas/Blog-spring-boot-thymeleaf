@@ -11,4 +11,8 @@ public interface CategoriaService {
     void eliminarCategoria(Long id);
 
     List<Categoria> listadoCategoria();
+
+    Categoria categoriaPorId(Long id);
+
+
 }

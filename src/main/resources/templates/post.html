@@ -14,7 +14,7 @@
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
     <link rel="stylesheet" th:href="@{/css/style.css}">
-
+    <title th:text="${post.titulo}"></title>
 
 
 </head>
@@ -23,91 +23,169 @@
     <!-- Navigation -->
     <div th:include="navbar.html ::header"></div>
 
-    <div class="container">
-        <h1 th:text="${post.titulo}"></h1>
+    <main class="container">
+
+        <br><br>
+
+        <div class="row g-5">
+            <div class="col-md-8">
+
+
+                <article class="blog-post">
+                    <h2 th:text="${post.titulo}" class="blog-post-title">Sample blog post</h2>
+                    <p th:text="${post.fecha}" class="blog-post-meta"></p> Escrito por <span
+                        th:text="${post.usuario.username}"></span>
+                    <hr>
+
+
+                    <img th:src="@{'/uploads/'+${post.imagen}}" width="650px" class="img-fluid rounded-start" alt="...">
+
+
+
+
+                    <p th:utext="${post.contenido}">
+
+
+                    <h3>Sub-heading</h3>
+                    <p>This is some additional paragraph placeholder content. It has been written to fill the available
+                        t.</p>
+
+                </article>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div class="p-4 mb-3 bg-light rounded">
+                        <h4 class="fst-italic">About</h4>
+                        <div th:each="categoria : ${categorias}">
+                            <a th:href="@{/categoria/{id} (id=${categoria.id}) }">
+                                <p th:text="${categoria.nombre}"></p>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="p-4">
+                        <h4 class="fst-italic">Redes Sociales</h4>
+                        <ol class="list-unstyled">
+                            <li><a href="https://github.com/miguelvivas13" target="_blank">GitHub</a></li>
+                            <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <hr>
-        Escrito por <h4 th:text="${post.usuario.username}"></h4>
-        <img th:src="@{'/uploads/'+${post.imagen}}" width="700px" class="img-fluid rounded-start" alt="...">
-        <p th:utext="${post.contenido}"></p>
-
-        <p th:text="${post.fecha}"></p>
-
 
         <div class="col-7" th:each="comentario : ${post.comentarios}">
-            <div th:text="${comentario.contenido}"></div>
+            
 
             <div class="mt-2"></div>
 
-            <div th:each="i : ${comentario.usuario}">
-                <i class="fas fa-user">&nbsp<small th:text=${i.username}></small></i>
-            </div>
-
             <div th:each="i : ${comentario.usuario}" class="mb-5">
-                <span  th:if="${i.username == username}">
+                <div class="comment-wrapper">
+                    <div class="panel panel-info">
+
+                        <ul class="media-list">
+                            <li class="media">
+                                <a href="#" class="pull-left">
+                                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                </a>
+                                <div class="media-body">
+                                <div th:each="i : ${comentario.usuario}">
+                                    <strong class="text-success" 
+                                    th:text=${i.username}></strong>
+                                </div>
+                                    <p th:text="${comentario.contenido}">
+                                       
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
 
 
 
-
-                    <a th:href="@{/comentarios/editar-comentario/} + ${comentario.id}" style="text-decoration:none">
-                        <button class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
-                    </a>
+                </div>
+                <span th:if="${i.username == username}">
 
 
-                       <!-- Button trigger modal -->
-                <button  type="button" class="btn btn-primary" data-bs-toggle="modal"
-                       th:attr="data-bs-target='#exampleModal'+*{comentario.id}">
-                 Editar
-             </button>
-             <!-- Modal -->
-             <div class="modal fade" th:id="*{'exampleModal'+{comentario.id}}"   tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                 <div class="modal-dialog">
-                     <div class="modal-content">
-                         <div class="modal-header">
-                             <h5 class="modal-title" id="exampleModalLabel">Editar Comentario</h5>
-                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                         </div>
-                         <div class="modal-body">
-                             <form th:action="@{/post/actualizar-comentario}"  method="post">
-                                 <div class="mb-3">
-                                     <label for="id" class="form-label"></label>
-                                     <input type="number" class="form-control" id="id" name="id" th:value="${comentario.id}" hidden>
-                                 </div>
-                                 <div class="mb-3">
-                                     <label for="contenido" class="form-label">Comentario</label>
-                                     <input type="text" class="form-control" id="contenido" name="contenido" th:value="${comentario.contenido}" >
-                                 </div>
-                                 <button type="submit" id="boton" class="btn btn-primary">Guardar cambios</button>
-                             </form>
-                         </div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        th:attr="data-bs-target='#exampleModal'+*{comentario.id}" title="Editar Comentario">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" th:id="*{'exampleModal'+{comentario.id}}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Editar Comentario</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form th:action="@{/post/actualizar-comentario}" method="post">
+                                        <div class="mb-3">
+                                            <label for="id" class="form-label"></label>
+                                            <input type="number" class="form-control" id="id" name="id"
+                                                th:value="${comentario.id}" hidden>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contenido" class="form-label">Comentario</label>
+                                            <input type="text" class="form-control" id="contenido" name="contenido"
+                                                th:value="${comentario.contenido}">
+                                        </div>
+                                        <button type="submit" id="boton" class="btn btn-primary">Guardar
+                                            cambios</button>
+                                    </form>
+                                </div>
 
-                     </div>
-                 </div>
-             </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-                    
+
                     <a th:href="@{/post/borrar-comentario/} + ${comentario.id}" style="text-decoration:none">
-                        <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-danger" title="Eliminar Comentario"><i class="fas fa-trash"></i></button>
                     </a>
-                
+
                 </span>
-            
+
+
+
             </div>
+
 
 
         </div>
 
 
         <div class="col-8">
-            <span>Escribe algo</span>
+            <span>Escribe algo....</span>
             <form th:action="@{/post/guardar-comentario}" method="POST">
                 <label for="contenido" class="form-label"></label>
-                <textarea class="form-control" name="contenido" id="contenido" rows="6"></textarea>
+                <textarea class="form-control" name="contenido" id="contenido" rows="6"
+                    placeholder="Mensaje"></textarea>
 
-                <button type="submit" class="btn btn-primary">Registrar</button>
+                <br />
+
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <br />
             </form>
+
         </div>
-    </div>
+        <br /><br /><br />
+
+    </main>
+
+
+
 
 
 

@@ -21,8 +21,7 @@ public class Post {
     private LocalDate fecha;
 
 
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Categoria categoria;
 
     @ManyToOne

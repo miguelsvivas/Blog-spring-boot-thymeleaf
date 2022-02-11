@@ -12,9 +12,9 @@ xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 </head>
 <body>
 <div th:fragment="header">   
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Blog</a>
+        <a class="navbar-brand" style="padding-left: 10px; font-size: 24px;"  href="#">Blog</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,30 +23,29 @@ xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Categorias</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/login}"
-                    sec:authorize="!isAuthenticated()">Ingresar</a>
+                    sec:authorize="!isAuthenticated()"><i class="fas fa-user"></i> Ingresar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/usuario/registro}"
-                    sec:authorize="!isAuthenticated()">Registrarse</a>
+                    sec:authorize="!isAuthenticated()">Registro</a>
                 </li>
                 <div class="userdropwdown"  sec:authorize="isAuthenticated()">
                 <li class="nav-item dropdown">
-                    <a class="nav-link me-auto dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" 
-                    data-bs-toggle="dropdown" aria-expanded="false" th:if="${username != null}" th:text="${username}">
-                        Usuario
+                    <a class="nav-link me-auto dropdown-toggle" style="font-weight: 700;color: rgb(74, 74, 228);"  href="#" id="navbarDropdownMenuLink" role="button" 
+                    data-bs-toggle="dropdown" aria-expanded="false" th:if="${username != null}" th:text="${username}"
+                    >
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" th:href="@{/admin-posts}">Administración</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Cerrar Sesíon</a></li>
+                        <li><form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
+                            <button type="submit" class="dropdown-item" href="#">Cerrar Sesíon</a></form>
+                            </li>
+                       
+  
+                        
                     </ul>
                 </li>
             </div>

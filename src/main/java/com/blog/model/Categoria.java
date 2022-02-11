@@ -1,5 +1,7 @@
 package com.blog.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,16 +14,24 @@ public class Categoria {
     private String nombre;
     private String descripcion;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "categoria")
+	private List<Post> posts;
+
 
 
     public Categoria() {
     }
 
-    public Categoria(Long id, String nombre, String descripcion) {
+   
+
+    public Categoria(Long id, String nombre, String descripcion, List<Post> posts) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.posts = posts;
     }
+
+
 
     public Long getId() {
         return id;
@@ -46,4 +56,18 @@ public class Categoria {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    
 }

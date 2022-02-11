@@ -1,5 +1,6 @@
 package com.blog.service;
 
+import com.blog.model.Categoria;
 import com.blog.model.Post;
 import com.blog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,12 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public Post postPorId(Long id) {
+
+
         return postRepository.findById(id).orElse(null);
    
     }
+
+    
+
 }
