@@ -174,8 +174,14 @@
                     placeholder="Mensaje"></textarea>
 
                 <br />
+                <div sec:authorize="isAuthenticated()">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                  </div>
+                  <div sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}" style="font-size: 22px;">Iniciar sesión para comentar</a>
+                  </div>  
 
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                
                 <br />
             </form>
 

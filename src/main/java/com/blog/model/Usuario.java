@@ -1,6 +1,10 @@
 package com.blog.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +15,13 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    
+    @NotBlank
+    @Column(unique = true)
     private String username;
+
+    @NotEmpty
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)

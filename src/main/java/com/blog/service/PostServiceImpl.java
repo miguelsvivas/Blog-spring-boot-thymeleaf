@@ -4,6 +4,7 @@ import com.blog.model.Categoria;
 import com.blog.model.Post;
 import com.blog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +28,7 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public List<Post> listadoPosts() {
+
         return postRepository.findAll();
     }
 
@@ -41,6 +43,12 @@ public class PostServiceImpl implements PostService{
 
         return postRepository.findById(id).orElse(null);
    
+    }
+
+    @Override
+    public List<Post> postsPorId() {
+        
+        return postRepository.findAllByOrderByIdAsc();
     }
 
     

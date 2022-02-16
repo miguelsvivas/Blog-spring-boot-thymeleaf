@@ -26,6 +26,10 @@ public class UsuarioService {
         return usuarioRepository.findByUsername(username);
     }
 
+    public Usuario buscarUsuarioPorNombre(String username){
+        return usuarioRepository.findByUsername(username).orElse(null);
+    }
+
     public void save(Usuario usuario){
         usuarioRepository.save(usuario);
     }
@@ -36,6 +40,11 @@ public class UsuarioService {
 
     public boolean existsByUsername(String username){
         return usuarioRepository.existsByUsername(username);
+    }
+
+    
+    public void eliminarUsuario(Long id) {
+        usuarioRepository.deleteById(id);
     }
 
     

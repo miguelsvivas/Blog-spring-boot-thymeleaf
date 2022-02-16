@@ -2,7 +2,10 @@ package com.blog.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -13,8 +16,16 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
+    @NotEmpty
     private  String titulo;
+
+    
+    @NotEmpty
     private String contenido;
+
+
     private String imagen;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyy")

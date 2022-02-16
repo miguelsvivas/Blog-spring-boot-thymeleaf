@@ -98,8 +98,8 @@
                 <div class="row">
                     <form th:action="@{/admin-posts/update}"  method="post" enctype="multipart/form-data">
                         <div class="mb-3">
-                            <label for="id" class="form-label">id</label>
-                            <input type="number" class="form-control" id="id" name="id" th:value="${post.id}">
+                            <label for="id" class="form-label"></label>
+                            <input type="number" hidden class="form-control" id="id" name="id" th:value="${post.id}">
                         </div>
                         <div class="mb-3">
                             <label for="titulo" class="form-label">Titulo</label>

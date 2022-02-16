@@ -47,6 +47,7 @@ public class HomeController {
 
         if(auth != null){
         String username = auth.getName();
+        
         model.addAttribute("username", username);
         }
         

@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link  rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <title>Posts</title>
+    <title>Usuarios</title>
 </head>
 <body>
     <div layout:fragment="content">
@@ -18,7 +18,7 @@
             
 <div class="col py-3">
     <h1>Lista de usuarios</h1>
-    <a class="btn btn-success"  > Crear Posts</a>
+    
 
     <div class="card-body">
         <table class="table table-bordered">
@@ -27,6 +27,7 @@
                 <th >ID</th>
                 <th>Nombre de usuario</th>
                 <th>Rol</th>
+                <th>Opciones</th>
     
             </tr>
             </thead>
@@ -34,8 +35,17 @@
             <tr th:each="usuario : ${usuarios}" >
                 <td th:text="${usuario.id}"></td>
                 <td th:text="${usuario.username}"></td>
-                <td th:each="rol: ${usuario.roles}"
-                th:text="${rol.rolNombre}"></td>
+                <!-- <td th:each="rol: ${usuario.roles}"
+                th:text="${rol.rolNombre}"></td> -->
+                <td th:text="${usuario.roles}"></td>
+                <td><a type="button" class="btn btn-primary" title="Editar" th:href="@{/admin-usuarios/edit/{id} (id=${usuario.id}) }">
+                    <i class="fas fa-edit"></i>
+                </a> 
+                <a th:href="@{/admin-usuarios/delete/} + ${usuario.id}" style="text-decoration:none">
+                    <button class="btn btn-danger" title="Eliminar Usuario"><i class="fas fa-trash"></i></button>
+                </a> 
+            
+            </td>
             </tr>
             </tbody>
         </table>

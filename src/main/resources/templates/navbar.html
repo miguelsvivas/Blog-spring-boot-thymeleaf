@@ -1,6 +1,6 @@
 <!doctype html>
 <html xmlns:th="https://www.thymeleaf.org"
-xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+xmlns:sec="https://www.thymeleaf.org/extras/spring-security5">
 
 <head>
     <meta charset="UTF-8">
@@ -38,8 +38,12 @@ xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
                     data-bs-toggle="dropdown" aria-expanded="false" th:if="${username != null}" th:text="${username}"
                     >
                     </a>
+                   
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                       
+                        <div sec:authorize="hasAuthority('ADMIN')" >
                         <li><a class="dropdown-item" th:href="@{/admin-posts}">Administración</a></li>
+                        </div>
                         <li><form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
                             <button type="submit" class="dropdown-item" href="#">Cerrar Sesíon</a></form>
                             </li>
@@ -47,6 +51,7 @@ xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
   
                         
                     </ul>
+                
                 </li>
             </div>
             </ul>

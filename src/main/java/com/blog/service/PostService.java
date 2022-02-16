@@ -1,7 +1,6 @@
 package com.blog.service;
 
 
-import com.blog.model.Categoria;
 import com.blog.model.Post;
 
 import java.util.List;
@@ -18,6 +17,8 @@ public interface PostService {
     List<Post> listadoPosts();
 
     void eliminarPost(Long id);
+
+    List<Post> postsPorId();
 
     
 }

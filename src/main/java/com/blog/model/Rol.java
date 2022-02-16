@@ -39,4 +39,11 @@ public class Rol {
     public void setRolNombre(RolNombre rolNombre) {
         this.rolNombre = rolNombre;
     }
+
+    @Override
+    public String toString() {
+        return "" + rolNombre + "";
+    }
+
+
 }

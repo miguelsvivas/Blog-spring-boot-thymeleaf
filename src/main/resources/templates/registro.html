@@ -17,17 +17,32 @@
                         <h3 class="text-primary">Registro</h3>
                         <img src="https://raw.githubusercontent.com/miguelvivas13/Ecommerce-dashboard-laravel/main/public/imagenes/avatar.png" width="150px">
                     </div>
-                    <form th:action="@{/usuario/save}" method="POST">
+   
+                    <form th:action="@{/usuario/save}" th:object="${usuario}" method="post">
                         <div class="p-3">
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-primary"><i class="far fa-user" style="color: white;"></i></span>
-                                <input type="text" name="username" class="form-control" placeholder="Usuario">
+                                <input type="text" th:field="*{username}" name="username" 
+                                id="username" class="form-control" placeholder="Usuario" >
+
+                                
+
+                                
                             </div>
+                            <div class="alert-danger"
+                                th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></div>
+                                <br/>
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-primary"><i class="fas fa-key"  style="color: white;"></i></span>
-                                <input type="password" name="password" class="form-control" placeholder="contraseña">
+                                <input type="password"  th:field="*{password}" id="password"
+                                 name="password" class="form-control" placeholder="contraseña">
+                                 
 
                             </div>
+                            <div class="alert-danger"
+                            th:if="${#fields.hasErrors('password')}" th:errors="*{password}" ></div>
+
                             <button class="btn btn-primary text-center  mt-2" id="botonsubmit" type="submit">
                                 Registrar
                             </button>

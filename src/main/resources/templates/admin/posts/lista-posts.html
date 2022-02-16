@@ -28,7 +28,7 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
                         <th>Titulo</th>
                         <th>Fecha de creación</th>
                         <th>Autor</th>
@@ -39,17 +39,17 @@
                     </thead>
                     <tbody>
                     <tr  th:each="post : ${posts}">
-                        <td th:text="${post.id}"></td>
+                        <!-- <td th:text="${post.id}"></td> -->
                         <td th:text="${post.titulo}"></td>
                         <td th:text="${post.fecha}"></td>
                         <td th:text="${post.usuario.username}"></td>
                         <td th:text="${post.categoria.nombre}"></td>
                         <td><img th:src="@{'/uploads/'+${post.imagen}}" width="100"/></td>
-                        <td><a type="button" class="btn btn-primary" th:href="@{admin-posts/edit/{id} (id=${post.id}) }">
-                            Editar
+                        <td><a type="button" class="btn btn-primary" th:href="@{admin-posts/edit/{id} (id=${post.id}) }" title="Editar">
+                            <i class="fas fa-edit"></i>
                         </a>
 
-                            <a th:onclick="eliminarPost([[${post.id}]])" class="btn btn-danger">Eliminar</a>
+                            <a th:onclick="eliminarPost([[${post.id}]])" class="btn btn-danger" title="Eliminar"><i class="fas fa-trash"></i></a>
                         </td>
 
                     </tr>

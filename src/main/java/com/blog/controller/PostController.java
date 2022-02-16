@@ -6,6 +6,9 @@ import com.blog.model.Post;
 import com.blog.model.Usuario;
 import com.blog.service.CategoriaService;
 import com.blog.service.PostService;
+import com.blog.service.UsuarioService;
+
+import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,12 +34,16 @@ public class PostController {
     @Autowired
     CategoriaService categoriaService;
 
+    @Autowired
+    UsuarioService usuarioService;
+
 
     @GetMapping("")
     public String home(Model model){
 
+        
 
-        model.addAttribute("posts", postService.listadoPosts());
+        model.addAttribute("posts", postService.postsPorId());
 
         model.addAttribute("listaCategorias", categoriaService.listadoCategoria());
 
@@ -54,13 +61,23 @@ public class PostController {
         return "/admin/posts/crear-post";
     }
 
-    @PostMapping("admin-posts/crear/save")
-    public String savePost(@RequestParam(name = "file", required = false) MultipartFile imagen, Post post, RedirectAttributes redirect){
+    @PostMapping("/admin-posts/crear/save")
+    public String savePost(@RequestParam(name = "file", required = false) MultipartFile imagen, Post post,
+     RedirectAttributes redirect,Authentication auth){
+
+
+        
 
         if(!imagen.isEmpty()) {
             String ruta = "C://Users//MIGUEL//Documents//blog//uploads";
             String nombreUnico = UUID.randomUUID()+ "img" + imagen.getOriginalFilename();
-            Usuario usuario = new Usuario(2L);
+
+            String nombreUsuario = auth.getName();
+
+            Usuario user = usuarioService.getByUsername(nombreUsuario).get();
+
+
+            Usuario usuario = new Usuario(user.getId());
 
             try {
 

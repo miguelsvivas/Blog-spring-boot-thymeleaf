@@ -6,6 +6,7 @@ import com.blog.repository.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +22,10 @@ public class RolService {
     public void guardarRol(Rol rol) {
        rolRepository.save(rol);
 
+    }
+
+    public List<Rol> listRoles() {
+        return rolRepository.findAll();
     }
 
     public Optional<Rol> getByRolNombre(RolNombre rolNombre){
