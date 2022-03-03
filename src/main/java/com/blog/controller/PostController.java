@@ -25,7 +25,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("admin-posts")
+@RequestMapping("/admin-posts")
 public class PostController {
 
     @Autowired
