@@ -48,7 +48,7 @@ public class PostController {
         model.addAttribute("listaCategorias", categoriaService.listadoCategoria());
 
 
-        return "/admin/posts/lista-posts";
+        return "admin/posts/lista-posts";
     }
 
     @GetMapping("/crear")
@@ -58,7 +58,7 @@ public class PostController {
 
         model.addAttribute("listaCategorias", listaCategorias);
 
-        return "/admin/posts/crear-post";
+        return "admin/posts/crear-post";
     }
 
     @PostMapping("/admin-posts/crear/save")
@@ -113,7 +113,7 @@ public class PostController {
 
         model.addAttribute("listaCategorias", categoriaService.listadoCategoria());
 
-        return "/admin/posts/editar-post";
+        return "admin/posts/editar-post";
     }
 
     @PostMapping("/update")

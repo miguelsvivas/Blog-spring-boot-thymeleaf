@@ -32,7 +32,7 @@ public class UsuarioAdminController {
 
         model.addAttribute("usuarios", usuarioService.listaUsuarios());
 
-        return "/admin/user/lista-usuarios";
+        return "admin/user/lista-usuarios";
     }
 
     
@@ -48,7 +48,7 @@ public class UsuarioAdminController {
 
         model.addAttribute("usuario", usuario);
 
-        return "/admin/user/editar-usuario";
+        return "admin/user/editar-usuario";
     }
 
     @PostMapping("/edit/save")

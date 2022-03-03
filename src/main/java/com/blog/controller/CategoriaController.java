@@ -23,7 +23,7 @@ public class CategoriaController {
 
         model.addAttribute("categorias", categoriaService.listadoCategoria());
 
-        return "/admin/listar-categorias";
+        return "admin/listar-categorias";
     }
 
     @GetMapping("/crear")
