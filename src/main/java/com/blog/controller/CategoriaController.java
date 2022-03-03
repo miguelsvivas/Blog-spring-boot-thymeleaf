@@ -29,7 +29,7 @@ public class CategoriaController {
     @GetMapping("/crear")
     public String categoriaform(){
 
-        return "/admin/crear-categoria";
+        return "admin/crear-categoria";
     }
 
 
