@@ -57,8 +57,9 @@ public class UsuarioController {
         
         usuario.setUsername(username);
         usuario.setPassword(passwordEncoder.encode(password));
-       
-        Rol rolUser = rolService.getByRolNombre(RolNombre.USER).get();
+        
+        Rol rolUser = rolService.getByRolNombre(RolNombre.ADMIN).get();
+        //Rol rolUser = rolService.getByRolNombre(RolNombre.USER).get();
 
         Set<Rol> roles = new HashSet<Rol>();
 
