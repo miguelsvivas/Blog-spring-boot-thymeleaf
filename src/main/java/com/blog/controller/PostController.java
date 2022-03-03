@@ -61,7 +61,7 @@ public class PostController {
         return "admin/posts/crear-post";
     }
 
-    @PostMapping("/admin-posts/crear/save")
+    @PostMapping("admin-posts/crear/save")
     public String savePost(@RequestParam(name = "file", required = false) MultipartFile imagen, Post post,
      RedirectAttributes redirect,Authentication auth){
 
