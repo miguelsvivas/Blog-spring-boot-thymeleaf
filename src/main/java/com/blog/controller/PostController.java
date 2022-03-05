@@ -135,7 +135,7 @@ public class PostController {
         }
 
         if(!imagenPortada.isEmpty()) {
-            String ruta = "C://Users//MIGUEL//Documents//blog//uploads";
+            String ruta = "uploads//";
             String nombreUnico = UUID.randomUUID()+ "img" + imagenPortada.getOriginalFilename();
 
 

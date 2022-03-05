@@ -19,7 +19,7 @@
     <div layout:fragment="content">
         <div class="contenidot">
         <div class="col py-3">
-        <h1>Lista de categorias</h1>
+        <h1>Categorias</h1>
         <a class="btn btn-success" th:href="@{admin-categorias/crear}" > Crear Categoria</a>
 
         <div class="card-body">
@@ -37,11 +37,11 @@
                     <td   th:text="${categoria.id}" ></td>
                     <td  th:text="${categoria.nombre}"></td>
                     <td th:text="${categoria.descripcion}"></td>
-                    <td  ><a th:onclick="eliminar([[${categoria.id}]])" class="btn btn-danger">Eliminar</a>
+                    <td  ><a th:onclick="eliminar([[${categoria.id}]])" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         <!-- Button trigger modal -->
                         <button  type="button" class="btn btn-primary" data-bs-toggle="modal"
                                   th:attr="data-bs-target='#exampleModal'+*{categoria.id}">
-                            Editar
+                                  <i class="fas fa-edit"></i>
                         </button>
                         <!-- Modal -->
                         <div class="modal fade" th:id="*{'exampleModal'+{categoria.id}}"   tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
