@@ -69,7 +69,7 @@ public class PostController {
         
 
         if(!imagen.isEmpty()) {
-            String ruta = "C://Users//MIGUEL//Documents//blog//uploads";
+            String ruta = "uploads//";
             String nombreUnico = UUID.randomUUID()+ "img" + imagen.getOriginalFilename();
 
             String nombreUsuario = auth.getName();
