@@ -44,7 +44,12 @@
                         <td th:text="${post.fecha}"></td>
                         <td th:text="${post.usuario.username}"></td>
                         <td th:text="${post.categoria.nombre}"></td>
-                        <td><img th:src="@{'/uploads/'+${post.imagen}}" width="100"/></td>
+                        <td>
+                            <!-- <img th:src="@{'/uploads/'+${post.imagen}}" width="100"/> -->
+                            <img  width="100" src="https://raw.githubusercontent.com/miguelsvivas/Blog-spring-boot-thymeleaf/main/uploads/cfa2d988-23dd-4dda-b909-a5543cae36faimgstatistic-g5ecaab62d_1280.png" alt="">
+
+                        
+                        </td>
                         <td><a type="button" class="btn btn-primary" th:href="@{admin-posts/edit/{id} (id=${post.id}) }" title="Editar">
                             <i class="fas fa-edit"></i>
                         </a>

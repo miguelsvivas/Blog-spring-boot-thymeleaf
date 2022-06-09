@@ -38,7 +38,10 @@
               <div class="card shadow single_post mb-3 " th:each="post : ${posts}">
                 <div class="body">
                   <div class="img-post">
-                    <img class="d-block img-fluid" th:src="@{'/uploads/'+${post.imagen}}" alt="">
+                    <!-- <img class="d-block img-fluid" th:src="@{'/uploads/'+${post.imagen}}" alt=""> -->
+                    <img  class="d-block img-fluid"
+                     src="https://raw.githubusercontent.com/miguelsvivas/Blog-spring-boot-thymeleaf/main/uploads/cfa2d988-23dd-4dda-b909-a5543cae36faimgstatistic-g5ecaab62d_1280.png" alt="">
+                  
                   </div>
                   <h3  th:text="${post.titulo}"></h3>
                   <p>It is a long established fact that a reader will be distracted by the readable content of a page
