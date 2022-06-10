@@ -1,7 +1,7 @@
 package com.blog.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -23,6 +23,7 @@ public class Post {
 
     
     @NotEmpty
+    @Lob
     private String contenido;
 
 

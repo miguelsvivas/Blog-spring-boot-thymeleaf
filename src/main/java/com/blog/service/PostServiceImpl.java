@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 @Service
 public class PostServiceImpl implements PostService{
 
@@ -17,6 +19,7 @@ public class PostServiceImpl implements PostService{
     PostRepository postRepository;
 
     @Override
+    @Transactional
     public Post save(Post post) {
         return postRepository.save(post);
     }
@@ -27,6 +30,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
+    @Transactional
     public List<Post> listadoPosts() {
 
         return postRepository.findAll();
@@ -46,6 +50,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
+    @Transactional
     public List<Post> postsPorId() {
         
         return postRepository.findAllByOrderByIdAsc();
