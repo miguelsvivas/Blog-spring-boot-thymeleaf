@@ -23,7 +23,7 @@ public class Post {
 
     
     @NotEmpty
-    @Lob
+    @Column(columnDefinition = "text")
     private String contenido;
 
 

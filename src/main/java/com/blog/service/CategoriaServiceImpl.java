@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 @Service
 public class CategoriaServiceImpl implements CategoriaService{
 
@@ -32,6 +34,7 @@ public class CategoriaServiceImpl implements CategoriaService{
     }
 
     @Override
+    @Transactional
     public Categoria categoriaPorId(Long id) {
         
         return categoriaRepository.findById(id).orElse(null);

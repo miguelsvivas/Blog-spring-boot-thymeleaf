@@ -3,6 +3,7 @@ package com.blog.controller;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 
 import com.blog.model.Categoria;
 import com.blog.model.Comentario;
